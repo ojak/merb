@@ -20,19 +20,12 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
-
 module ActionORM
-  autoload :VERSION,  File.join(File.dirname(__FILE__), 'action_orm', 'version')
-  autoload :Core,     File.join(File.dirname(__FILE__), 'action_orm', 'core')
-  
   module Drivers
-    autoload :AbstractDriver,   File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'abstract_driver')
-    autoload :SequelDriver,     File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'sequel_driver')
-    autoload :DataMapperDriver, File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'datamapper_driver')
-  end
-  
-  class << self
-    include Core::ClassMethods
+    class DataMapperDriver < AbstractDriver
+      def new_record?
+        model.new?
+      end
+    end
   end
 end
-

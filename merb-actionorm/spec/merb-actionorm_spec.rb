@@ -74,7 +74,7 @@ describe "merb-actionorm" do
   
   describe "DataMapper ORM" do
     before(:all) do
-      ActionORM.use :driver => nil, :for => DataMapper::Resource
+      ActionORM.use :driver => ActionORM::Drivers::DataMapperDriver, :for => DataMapper::Resource
       DataMapper.setup(:default, 'sqlite3::memory:')
       class DMModel
         include DataMapper::Resource
