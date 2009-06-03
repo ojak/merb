@@ -51,25 +51,6 @@ if defined?(Merb::Plugins)
     end
   end
 
-  class Merb::Orms::DataMapper::Associations < Merb::BootLoader
-    after LoadClasses
-
-    def self.run
-      Merb.logger.verbose! 'Merb::Orms::DataMapper::Associations block'
-
-      # make sure all relationships are initialized after loading
-      descendants = DataMapper::Resource.descendants.dup
-      descendants.dup.each do |model|
-        descendants.merge(model.descendants) if model.respond_to?(:descendants)
-      end
-      descendants.each do |model|
-        model.relationships.each_value { |r| r.child_key }
-      end
-
-      Merb.logger.verbose! 'Merb::Orms::DataMapper::Associations complete'
-    end
-  end
-
   if Merb::Plugins.config[:merb_datamapper][:use_repository_block]
     # wrap action in repository block to enable identity map
     class Application < Merb::Controller
