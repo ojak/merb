@@ -26,9 +26,8 @@ module ActionORM
   autoload :Core,     File.join(File.dirname(__FILE__), 'action_orm', 'core')
   
   module Drivers
-    autoload :AbstractDriver,   File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'abstract_driver')
-    autoload :SequelDriver,     File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'sequel_driver')
-    autoload :DataMapperDriver, File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'datamapper_driver')
+    autoload :AbstractDriver, File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'abstract_driver')
+    autoload :SequelDriver,   File.join(File.dirname(__FILE__), 'action_orm', 'drivers', 'sequel_driver')
   end
   
   class << self

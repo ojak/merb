@@ -51,8 +51,6 @@ module ActionORM
           options = {:for => TestORMModel, :driver => Drivers::TestORMDriver}.merge(options)
         when /sequel/i
           options = {:for => Sequel::Model, :driver => Drivers::SequelDriver}.merge(options)
-        when /datamapper/i
-          options = {:for => DataMapper::Resource, :driver => Drivers::DataMapperDriver}.merge(options)
         end
         ActionORM.register(options[:for], options[:driver])
       end
